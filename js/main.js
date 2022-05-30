@@ -1,7 +1,9 @@
+// Event listener on our button
 document.querySelector('#clickMe').addEventListener('click', makeReq)
 
 async function makeReq(){
 
+  // Here we fetch the result of the coinflip from our server.js /api path
   const res = await fetch('/api')
   const data = await res.json()
 
