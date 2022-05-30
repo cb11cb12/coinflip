@@ -31,31 +31,20 @@ const server = http.createServer((req, res) => {
     readWrite('otherotherpage.html', 'text/html')
     
   }
-  else if (page == '/api') {
-    // if('student' in params){
-    //   let personName = "unknown"
-    //   let personStatus = "unknown"
-    //   let personOccupation = "unknown"
-    //   if(params['student']== 'flip'){
-    //     personName = "Leon"
-    //     personStatus = "Boss Man"
-    //     personOccupation = "Baller"
 
-    // let flipResult = 'type flip in the input box'
+  //this connects to our fetch in main.js, thus the below is the coin flip object that is returned to main.js, and from there is put into the #flipResponse in our index.html DOM
+  
+  else if (page == '/api') {
+ 
     let flipResult = Math.random() <= .5 ? 'Heads' : 'Tails' 
-    // if(params['student']== 'flip') {
-    //   flipResult = Math.random() <= .5 ? 'heads' : 'tails' 
-    //   }
-    
+
       res.writeHead(200, {'Content-Type': 'application/json'});
       const objToJson = {
-        name: flipResult
+        flip: flipResult
       }
       res.end(JSON.stringify(objToJson));
-
-    }//student if
-  //else if
-  else if (page == '/css/style.css'){
+    
+    }else if (page == '/css/style.css'){
     fs.readFile('css/style.css', function(err, data) {
       res.write(data);
       res.end();
